@@ -7,10 +7,28 @@ window.addEventListener("load", function(){
       let copilotInput = document.getElementById("copilotName");
       let fuelInput = document.getElementById("fuelLevel");
       let cargoInput = document.getElementById("cargoMass");
+      let items = document.getElementById("itemStatus");
       if (pilotInput.value === "" || copilotInput.value === "" || fuelInput.value === "" || cargoInput.value === "") {
-         alert("All fields are required!");
-      } if (typeof pilotInput.value === "number" || typeof copilotInput.value === "number" || typeof fuelInput.value !== "number" || typeof cargoInput.value !== "number") {
-            alert("Invalid input!");
+         window.alert("All fields are required!");
+      } else if (isNaN(pilotInput.value) === false || isNaN(copilotInput.value === false)){ 
+         window.alert("Please enter a name.");
+      } else if (isNaN(fuelInput.value) || isNaN(cargoInput.value)) {
+         window.alert ("Please enter a number.")
+      } else {
+         items.style.visibility = "visible";
+         pilotStatus.innerHTML = `Pilot ${pilotInput.value} is ready for launch.`;
+         copilotStatus.innerHTML = `Copilot ${copilotInput.value} is ready for launch.`;
+         if (fuelInput.value < 10000 || cargoInput.value > 10000){
+            fuelStatus.innerHTML = "Not enough fuel for the journey.";
+            cargoStatus.innerHTML = "Too much mass for the shuttle to take off.";
+            launchStatus.innerHTML = "Shuttle is NOT ready for launch!";
+            launchStatus.style.color = "red";
+         }else{
+            fuelStatus.innerHTML = "Fuel level check passed.";
+            cargoStatus.innerHTML = "Cargo mass check passed.";
+            launchStatus.innerHTML = "Shuttle is ready for launch!";
+            launchStatus.style.color = "green";
+         }
       }
       
    })
