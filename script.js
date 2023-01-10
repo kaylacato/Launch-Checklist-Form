@@ -9,6 +9,8 @@ window.addEventListener("load", function(){
       let cargoInput = document.getElementById("cargoMass");
       if (pilotInput.value === "" || copilotInput.value === "" || fuelInput.value === "" || cargoInput.value === "") {
          alert("All fields are required!");
+      } if (typeof pilotInput.value === "number" || typeof copilotInput.value === "number" || typeof fuelInput.value !== "number" || typeof cargoInput.value !== "number") {
+            alert("Invalid input!");
       }
       
    })
