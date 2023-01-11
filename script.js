@@ -10,9 +10,9 @@ window.addEventListener("load", function(){
       if (pilotInput.value === "" || copilotInput.value === "" || fuelInput.value === "" || cargoInput.value === "") {
          window.alert("All fields are required!");
       } else if (isNaN(pilotInput.value) === false || isNaN(copilotInput.value === false)){ 
-         window.alert("Please enter a name.");
+         window.alert("Please enter valid information for each field.");
       } else if (isNaN(fuelInput.value) || isNaN(cargoInput.value)) {
-         window.alert ("Please enter a number.")
+         window.alert ("Please enter valid information for each field.")
       } else {
          items.style.visibility = "visible";
          pilotStatus.innerHTML = `Pilot ${pilotInput.value} is ready for launch.`;
@@ -29,7 +29,7 @@ window.addEventListener("load", function(){
             launchStatus.style.color = "red";
          }else{
             fuelStatus.innerHTML = "Fuel level check passed.";
-            cargoInput.innerHTML = "Cargo mass check passed.";
+            cargoStatus.innerHTML = "Cargo mass check passed.";
             launchStatus.innerHTML = "Shuttle is ready for launch!";
             launchStatus.style.color = "green";
          }
