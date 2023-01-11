@@ -9,10 +9,10 @@ window.addEventListener("load", function(){
       let items = document.getElementById("itemStatus");
       if (pilotInput.value === "" || copilotInput.value === "" || fuelInput.value === "" || cargoInput.value === "") {
          window.alert("All fields are required!");
-      } else if (isNaN(pilotInput.value) === false || isNaN(copilotInput.value === false)){ 
-         window.alert("Please enter valid information for each field.");
-      } else if (isNaN(fuelInput.value) || isNaN(cargoInput.value)) {
-         window.alert ("Please enter valid information for each field.")
+      } else if (isNaN(pilotInput.value) === false|| isNaN(copilotInput.value) === false){ 
+         window.alert("Please enter a name.");
+      } else if (isNaN(fuelInput.value) === true|| isNaN(cargoInput.value) === true) {
+         window.alert ("Please enter a number.")
       } else {
          items.style.visibility = "visible";
          pilotStatus.innerHTML = `Pilot ${pilotInput.value} is ready for launch.`;
@@ -39,7 +39,7 @@ window.addEventListener("load", function(){
    fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){
       response.json().then(function(json){
          const target = document.getElementById("missionTarget");
-         let index = Math.floor(Math.random()*7);
+         let index = Math.floor(Math.random()*6);
             target.innerHTML +=
             `
                 <h2> Mission Destination</h2>
