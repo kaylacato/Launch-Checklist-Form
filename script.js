@@ -1,4 +1,3 @@
-// Write your JavaScript code here!
 window.addEventListener("load", function(){
    let form = document.querySelector("#launchForm")
    form.addEventListener("submit", function(event){
