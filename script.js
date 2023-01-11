@@ -18,39 +18,41 @@ window.addEventListener("load", function(){
          items.style.visibility = "visible";
          pilotStatus.innerHTML = `Pilot ${pilotInput.value} is ready for launch.`;
          copilotStatus.innerHTML = `Copilot ${copilotInput.value} is ready for launch.`;
-         if (fuelInput.value < 10000 || cargoInput.value > 10000){
+         if (fuelInput.value < 10000 && cargoInput.value <= 10000){
             fuelStatus.innerHTML = "Not enough fuel for the journey.";
+            cargoStatus.innerHTML = "Cargo mass check passed.";
+            launchStatus.innerHTML = "Shuttle is NOT ready for launch!";
+            launchStatus.style.color = "red";
+         }else if(fuelInput.value >= 10000 && cargoInput.value > 10000){
+            fuelStatus.innerHTML = "Fuel level check passed."
             cargoStatus.innerHTML = "Too much mass for the shuttle to take off.";
             launchStatus.innerHTML = "Shuttle is NOT ready for launch!";
             launchStatus.style.color = "red";
          }else{
             fuelStatus.innerHTML = "Fuel level check passed.";
-            cargoStatus.innerHTML = "Cargo mass check passed.";
+            cargoInput.innerHTML = "Cargo mass check passed.";
             launchStatus.innerHTML = "Shuttle is ready for launch!";
             launchStatus.style.color = "green";
          }
       }
-      
+   })
+   
+   fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){
+      response.json().then(function(json){
+         const target = document.getElementById("missionTarget");
+         let index = Math.floor(Math.random()*7);
+            target.innerHTML +=
+            `
+                <h2> Mission Destination</h2>
+                   <ul>
+                     <li>Name: ${json[index].name}</li>
+                     <li>Diameter: ${json[index].diameter}</li>
+                     <li>Star: ${json[index].star}</li>
+                     <li>Distance from Earth: ${json[index].distance}</li>
+                     <li>Number of Moons: ${json[index].moons}</li>
+                  </ul>
+                  <img src = "${json[index].image}">
+            `
+      })
    })
 })
-/* This block of code shows how to format the HTML once you fetch some planetary JSON!
-<h2>Mission Destination</h2>
-<ul>
-   <li>Name: ${}</li>
-   <li>Diameter: ${}</li>
-   <li>Star: ${}</li>
-   <li>Distance from Earth: ${}</li>
-   <li>Number of Moons: ${}</li>
-</ul>
-<img src="${}">
-*/
-// TODO 1: set up a window load handler
-   // TODO 2: set up a submit handler for the form
-      // TODO 3: cancel submission using events.preventsDefault()
-// TODO 4: validate that all inputs have data in them
-// TODO 5: check fuelLevel and cargoMass and report launch status
-// TODO 6: make the list visible
-
-// TODO 7: fetch planet data
-   // TODO 8: randomly choose one of the planets
-   // TODO 9: display info of chosen planet
